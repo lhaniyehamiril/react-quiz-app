@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: game;
+  src: url("../src/font/PixelGame.otf");
+}
+@font-face {
+  font-family: nunito;
+  src: url("../src/font/Nunito-ExtraBold.ttf");
+}
+@font-face {
+  font-family: n;
+  src: url("https://emojipedia.org/apple/ios-14.5/smiling-face-with-horns");
+}
+
+body {
+  overflow: hidden;
+  font-family: nunito;
+  background: #1a1a1d;
+}
+
+#logo {
+  animation: logo 5s infinite;
+}
+
+@keyframes logo {
+  to {
+    transform: rotate(0);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+h2 {
+  font-family: game;
+}
+
+#button-start-page {
+  background-color: #289fc0;
+  position: relative;
+}
+
+#button-start-page::before {
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    #1a1a1d 0%,
+    #1a1a1d 50%,
+    #2d97b491 50%,
+    #2d97b491 60%
+  );
+  border-radius: 0 0 0.5em 0;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.293);
+  transition: 0.4s;
+  border-radius: 5px;
+}
+
+#button-start-page:hover::before {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.btn-quiz {
+  text-align: center;
+  color: #289fc0;
+  background: #1a1a1d;
+  width: 260px;
+  padding: 1.75rem 0 1.75rem 0;
+  border-radius: 1.5rem;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.correct {
+  background: #9bffa5;
+  color: #1a1a1d;
+}
+
+.wrong {
+  background: #2c2c2c;
+  /* color: #1a1a1d; */
+}
+
+.answer {
+  transform: scale(0.8);
+}
+
+progress {
+  -webkit-appearance: none;
+  height: 12px;
+}
+
+::-webkit-progress-bar {
+  background: #fff;
+  border-radius: 100px;
+}
+::-webkit-progress-value {
+  background: #289fc0;
+  border-radius: 100px;
+}
+
+#timer {
+  border-radius: 2rem;
+  background-image: url(./assets/timer.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
