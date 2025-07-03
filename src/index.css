@@ -15,10 +15,15 @@
   src: url("https://emojipedia.org/apple/ios-14.5/smiling-face-with-horns");
 }
 
+:root {
+  --color-blue-primary: #1a1a1d;
+  --color-blue: #289fc0;
+}
+
 body {
   overflow: hidden;
   font-family: nunito;
-  background: #1a1a1d;
+  background: var(--color-blue-primary);
 }
 
 #logo {
@@ -39,7 +44,7 @@ h2 {
 }
 
 #button-start-page {
-  background-color: #289fc0;
+  background-color: var(--color-blue);
   position: relative;
 }
 
@@ -68,31 +73,6 @@ h2 {
   height: 1.6em;
 }
 
-.btn-quiz {
-  text-align: center;
-  color: #289fc0;
-  background: #1a1a1d;
-  width: 260px;
-  padding: 1.75rem 0 1.75rem 0;
-  border-radius: 1.5rem;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.correct {
-  background: #9bffa5;
-  color: #1a1a1d;
-}
-
-.wrong {
-  background: #2c2c2c;
-  /* color: #1a1a1d; */
-}
-
-.answer {
-  transform: scale(0.8);
-}
-
 progress {
   -webkit-appearance: none;
   height: 12px;
@@ -103,7 +83,7 @@ progress {
   border-radius: 100px;
 }
 ::-webkit-progress-value {
-  background: #289fc0;
+  background: var(--color-blue);
   border-radius: 100px;
 }
 
