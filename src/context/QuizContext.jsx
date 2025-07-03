@@ -1,86 +1,14 @@
 import { createContext, useContext, useReducer } from "react";
+import { questionsArr } from "../ui/questions";
 
 
 const QuizContext = createContext();
-
-
-
-const Questions = [
-    {
-        question: "which is the most popular JavaScript framework?",
-        options: ["Angular", "React"],
-        correctOption: 1,
-        points: 10
-    }
-    ,
-    {
-        question: "which company invented React?",
-        options: ["Google", "Facebook"],
-        correctOption: 1,
-        points: 10
-    },
-    {
-        question: "whats the fundamental building block of React apps?",
-        options: ["Components", "Blocks"],
-        correctOption: 0,
-        points: 10
-    },
-    {
-        question: "whats the name syntax in React components?",
-        options: ["FBJ", "JSX"],
-        correctOption: 1,
-        points: 10
-    },
-    {
-        question: "How does data flow naturally in React apps?",
-        options: [
-            "From parents to children",
-            "The developers decides"
-        ],
-        correctOption: 0,
-        points: 15
-    },
-    {
-        question: "How to pass data into a child component?",
-        options: ["Props", "Parameters"],
-        correctOption: 0,
-        points: 10
-    },
-    {
-        question: "How do you update a components state in React?",
-        options: ["render", " setState"],
-        correctOption: 0,
-        points: 15
-    },
-    {
-        question: "what triggers a UI rerender in React?",
-        options: ["Running an effect", "Updating state"],
-        correctOption: 1,
-        points: 20
-    },
-    {
-        question: "when do we directly touch the DOM in React?",
-        options: [
-            "need to listen to an event",
-            "Almost never"
-        ],
-        correctOption: 1,
-        points: 15
-    },
-    {
-        question: "which hook in React is used for managing state?",
-        options: ["useState", "useReducer"],
-        correctOption: 0,
-        points: 10
-    }
-]
-
 
 const SECS_PER_QUESTION = 18
 
 
 const initialState = {
-    questions: Questions,
+    questions: questionsArr,
     status: 'ready',
     index: 0,
     answer: null,
@@ -91,9 +19,11 @@ const reducer = (state, action) => {
     switch (action.type) {
         case 'start':
             return { ...state, status: 'active', secondsRemaining: state.questions.length * SECS_PER_QUESTION };
-        case 'newAnswer':
+        case 'newAnswer': {
             const question = state.questions[state.index];
             return { ...state, answer: action.payload, points: action.payload === question.correctOption ? state.points + question.points : state.points };
+
+        }
         case 'nextQuestion':
             return { ...state, index: state.index + 1, answer: null }
         case 'tick':
@@ -133,7 +63,7 @@ const QuizProvider = ({ children }) => {
 
 const useQuiz = () => {
     const context = useContext(QuizContext)
-    if (context === null) throw new Error("quizcontext was used outside of quizprovider");
+    if (context === null) throw new Error("useQuiz should be used in QuizProvider");
     return context
 }
 
