@@ -4,7 +4,7 @@ Its features 10 random questions and you can see your score at the end
 
 
 # 🌐 react quiz 
-[react quiz](https://web-app-react-quiz.netlify.app/)
+[react quiz](https://web-app-quiz-react.netlify.app/)
 
 ## ⛓ featurs
 - smooth UI with **Framer motion** animation
